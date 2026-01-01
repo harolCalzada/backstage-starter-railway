@@ -47,7 +47,16 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-# Copy the built artifacts from the build stage
+# 1. Copy the skeleton and install production dependencies
+COPY --from=build --chown=node:node /app/yarn.lock /app/package.json /app/.yarnrc.yml /app/backstage.json ./
+COPY --from=build --chown=node:node /app/.yarn ./.yarn
+COPY --from=build --chown=node:node /app/packages/backend/dist/skeleton.tar.gz .
+RUN tar xzf skeleton.tar.gz && rm skeleton.tar.gz
+
+# Install production dependencies only
+RUN yarn workspaces focus --all --production && rm -rf "$(yarn cache clean)"
+
+# 2. Copy the built artifacts and entrypoint
 COPY --from=build --chown=node:node /app/packages/backend/dist/bundle.tar.gz .
 COPY --from=build --chown=node:node /app/app-config.yaml .
 COPY --from=build --chown=node:node /app/app-config.production.yaml .
