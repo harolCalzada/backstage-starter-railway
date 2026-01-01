@@ -54,14 +54,14 @@ COPY --from=build --chown=node:node /app/app-config.production.yaml .
 COPY --from=build --chown=node:node /app/entrypoint.sh .
 
 # Ensure the entrypoint script is executable
-RUN chmod +x entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 # Extract the bundle
-RUN tar xzf bundle.tar.gz && rm bundle.tar.gz
+RUN tar xzf bundle.tar.gz && rm bundle.tar.gz && chown -R node:node /app
 
 # Switch to node user
 USER node
 
-# Entrypoint script handles dynamic URL injection
-ENTRYPOINT ["./entrypoint.sh"]
+# Call sh explicitly to avoid permission issues with the +x bit or shebang
+ENTRYPOINT ["/bin/sh", "/app/entrypoint.sh"]
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 # If no APP_BASE_URL is set, try to use the Railway domain
@@ -19,7 +19,8 @@ echo "🚀 Setting Backstage Base URL to: $APP_BASE_URL"
 # Find all JS files and replace the placeholder
 # Note: We use a specific placeholder baked in during Docker build
 echo "🔍 Injecting runtime variables into bundles..."
-find . -type f -name "*.js" -exec sed -i "s|__BACKSTAGE_BASE_URL__|$APP_BASE_URL|g" {} +
+# We use a simple find + sed that is compatible with POSIX sh and Alpine/Debian sed
+find /app/packages /app/app-config.production.yaml -type f -name "*.js" -o -name "*.yaml" | xargs sed -i "s|__BACKSTAGE_BASE_URL__|$APP_BASE_URL|g" || true
 
 # Execute the actual Backstage command
 exec node packages/backend --config app-config.yaml --config app-config.production.yaml
