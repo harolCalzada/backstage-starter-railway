@@ -1,5 +1,5 @@
 # Stage 1 - Build the backend
-FROM node:20-bookworm-slim AS build
+FROM node:22-bookworm-slim AS build
 
 # Set Python interpreter for `node-gyp` to use
 ENV PYTHON=/usr/bin/python3
@@ -7,7 +7,7 @@ ENV NODE_OPTIONS=--max-old-space-size=4096
 
 # Install dependencies for building
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 g++ build-essential && \
+    apt-get install -y --no-install-recommends python3 g++ build-essential libc++-dev libsqlite3-dev pkg-config zlib1g-dev libv8-dev && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -34,7 +34,7 @@ RUN yarn build:backend
 WORKDIR /app
 
 # Stage 2 - Create the final image
-FROM node:20-bookworm-slim
+FROM node:22-bookworm-slim
 
 # Set Python interpreter for `node-gyp` to use
 ENV PYTHON=/usr/bin/python3
