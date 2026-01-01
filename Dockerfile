@@ -53,6 +53,9 @@ COPY --from=build --chown=node:node /app/app-config.yaml .
 COPY --from=build --chown=node:node /app/app-config.production.yaml .
 COPY --from=build --chown=node:node /app/entrypoint.sh .
 
+# Ensure the entrypoint script is executable
+RUN chmod +x entrypoint.sh
+
 # Extract the bundle
 RUN tar xzf bundle.tar.gz && rm bundle.tar.gz
 
