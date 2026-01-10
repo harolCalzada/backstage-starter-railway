@@ -2,7 +2,7 @@
 
 This is a template for deploying a [Backstage](https://backstage.io) IDP instance on Railway.
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/vipulasri/backstage-railway&plugins=postgresql)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/backstage?referralCode=C1ptQA&utm_medium=integration&utm_source=template&utm_campaign=generic)
 
 ## Features
 
