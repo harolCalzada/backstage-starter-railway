@@ -60,6 +60,7 @@ RUN yarn workspaces focus --all --production && rm -rf "$(yarn cache clean)"
 COPY --from=build --chown=node:node /app/packages/backend/dist/bundle.tar.gz .
 COPY --from=build --chown=node:node /app/app-config.yaml .
 COPY --from=build --chown=node:node /app/app-config.production.yaml .
+COPY --from=build --chown=node:node /app/examples ./examples
 COPY --from=build --chown=node:node /app/entrypoint.sh .
 
 # Ensure the entrypoint script is executable
