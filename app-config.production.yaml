@@ -45,11 +45,11 @@ integrations:
 proxy:
   endpoints:
     '/gitlab-raw':
-      target: 'https://gitlab.com'
+      target: 'https://gitlab.com/api/v4'
       headers:
         Private-Token: '${GITLAB_TOKEN}'
       pathRewrite:
-        '^/gitlab-raw': ''
+        '^/api/proxy/gitlab-raw': ''
       changeOrigin: true
 
 auth:
