@@ -30,6 +30,12 @@ backend:
       #   ca: # if you have a CA file and want to verify it you can uncomment this section
       #     $file: <file-path>/ca/server.crt
 
+  # Allow Backstage to read from its own proxy endpoint
+  reading:
+    allow:
+      - host: backstage-production-6da7.up.railway.app
+      - host: '*.up.railway.app'
+
 integrations:
   gitlab:
     - host: gitlab.com
