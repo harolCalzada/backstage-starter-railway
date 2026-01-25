@@ -54,6 +54,14 @@ proxy:
   #   '/test':
   #     target: 'https://example.com'
   #     changeOrigin: true
+  endpoints:
+    '/gitlab-raw':
+      target: 'https://gitlab.com'
+      headers:
+        Private-Token: '${GITLAB_TOKEN}'
+      pathRewrite:
+        '^/gitlab-raw': ''
+      changeOrigin: true
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -107,6 +115,18 @@ catalog:
     #   target: https://github.com/backstage/backstage/blob/master/packages/catalog-model/examples/acme-corp.yaml
     #   rules:
     #     - allow: [User, Group]
+
+    # Supermercados Schemas
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/catalog-info.yaml
+      rules:
+        - allow: [Component, API]
+    
+    # Organizational entities
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/backstage-org.yaml
+      rules:
+        - allow: [System, Group]
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options

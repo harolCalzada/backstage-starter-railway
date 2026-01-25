@@ -30,6 +30,22 @@ backend:
       #   ca: # if you have a CA file and want to verify it you can uncomment this section
       #     $file: <file-path>/ca/server.crt
 
+integrations:
+  gitlab:
+    - host: gitlab.com
+      token: ${GITLAB_TOKEN}
+      apiBaseUrl: https://gitlab.com/api/v4
+
+proxy:
+  endpoints:
+    '/gitlab-raw':
+      target: 'https://gitlab.com'
+      headers:
+        Private-Token: '${GITLAB_TOKEN}'
+      pathRewrite:
+        '^/gitlab-raw': ''
+      changeOrigin: true
+
 auth:
   providers:
     guest: 
@@ -56,3 +72,15 @@ catalog:
       target: ./examples/org.yaml
       rules:
         - allow: [User, Group]
+
+    # Supermercados Schemas
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/catalog-info.yaml
+      rules:
+        - allow: [Component, API]
+    
+    # Organizational entities
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/backstage-org.yaml
+      rules:
+        - allow: [System, Group]
