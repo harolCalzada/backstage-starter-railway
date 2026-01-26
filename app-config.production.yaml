@@ -52,6 +52,14 @@ proxy:
         '^/api/proxy/gitlab-raw': ''
       changeOrigin: true
 
+# TechDocs configuration for production (no Docker available)
+techdocs:
+  builder: 'local'
+  generator:
+    runIn: 'local'  # Use 'local' instead of 'docker' for Railway
+  publisher:
+    type: 'local'
+
 auth:
   providers:
     guest: 

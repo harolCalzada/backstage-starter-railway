@@ -40,9 +40,10 @@ FROM node:22-bookworm-slim
 ENV PYTHON=/usr/bin/python3
 ENV NODE_ENV=production
 
-# Install runtime dependencies
+# Install runtime dependencies including MkDocs for TechDocs
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 libsqlite3-dev openssl && \
+    apt-get install -y --no-install-recommends python3 python3-pip libsqlite3-dev openssl && \
+    pip3 install --no-cache-dir mkdocs-techdocs-core==1.* && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
