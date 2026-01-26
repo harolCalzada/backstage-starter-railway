@@ -42,7 +42,7 @@ ENV NODE_ENV=production
 
 # Install runtime dependencies including MkDocs for TechDocs
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 libsqlite3-dev openssl curl && \
+    apt-get install -y --no-install-recommends python3 libsqlite3-dev openssl curl ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 # Install pip using get-pip.py (more reliable than apt python3-pip in slim images)
