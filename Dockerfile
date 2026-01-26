@@ -47,11 +47,11 @@ RUN apt-get update && \
 
 # Install pip using get-pip.py (more reliable than apt python3-pip in slim images)
 RUN curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
-    python3 get-pip.py && \
+    python3 get-pip.py --break-system-packages && \
     rm get-pip.py
 
 # Install mkdocs-techdocs-core for TechDocs
-RUN pip3 install --no-cache-dir mkdocs-techdocs-core==1.*
+RUN pip3 install --no-cache-dir --break-system-packages mkdocs-techdocs-core==1.*
 
 WORKDIR /app
 
