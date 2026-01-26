@@ -42,9 +42,16 @@ ENV NODE_ENV=production
 
 # Install runtime dependencies including MkDocs for TechDocs
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3 python3-pip libsqlite3-dev openssl && \
-    pip3 install --no-cache-dir mkdocs-techdocs-core==1.* && \
+    apt-get install -y --no-install-recommends python3 libsqlite3-dev openssl curl && \
     rm -rf /var/lib/apt/lists/*
+
+# Install pip using get-pip.py (more reliable than apt python3-pip in slim images)
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
+    python3 get-pip.py && \
+    rm get-pip.py
+
+# Install mkdocs-techdocs-core for TechDocs
+RUN pip3 install --no-cache-dir mkdocs-techdocs-core==1.*
 
 WORKDIR /app
 
