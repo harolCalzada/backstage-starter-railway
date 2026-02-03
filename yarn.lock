@@ -18042,10 +18042,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cytoscape@npm:^3.23.0":
-  version: 3.33.1
-  resolution: "cytoscape@npm:3.33.1"
-  checksum: 10c0/dffcf5f74df4d91517c4faf394df880d8283ce76edef19edba0c762941cf4f18daf7c4c955ec50c794f476ace39ad4394f8c98483222bd2682e1fd206e976411
+"cytoscape@npm:3.28.1":
+  version: 3.28.1
+  resolution: "cytoscape@npm:3.28.1"
+  dependencies:
+    heap: "npm:^0.2.6"
+    lodash: "npm:^4.17.21"
+  checksum: 10c0/eefe6c3f0253ffdca46f9857e06eba947cb863df0583eaf5bb112bc640425608b983847ee3a5b864f9833b80a9bc41a8dc5d675555b107a3321006edfff504ef
   languageName: node
   linkType: hard
 
@@ -21900,6 +21903,13 @@ __metadata:
   bin:
     he: bin/he
   checksum: 10c0/a27d478befe3c8192f006cdd0639a66798979dfa6e2125c6ac582a19a5ebfec62ad83e8382e6036170d873f46e4536a7e795bf8b95bf7c247f4cc0825ccc8c17
+  languageName: node
+  linkType: hard
+
+"heap@npm:^0.2.6":
+  version: 0.2.7
+  resolution: "heap@npm:0.2.7"
+  checksum: 10c0/341c5d51ae13dc8346c371a8a69c57c972fcb9a3233090d3dd5ba29d483d6b5b4e75492443cbfeacd46608bb30e6680f646ffb7a6205900221735587d07a79b6
   languageName: node
   linkType: hard
 
