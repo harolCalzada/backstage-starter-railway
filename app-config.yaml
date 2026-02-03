@@ -47,6 +47,9 @@ integrations:
       token: ${GITLAB_TOKEN}
       apiBaseUrl: https://gitlab.com/api/v4
 
+gitlab:
+  allowedKinds: ['Component']
+
 proxy:
   ### Example for how to add a proxy endpoint for the frontend.
   ### A typical reason to do this is to handle HTTPS and CORS for internal services.
@@ -116,12 +119,32 @@ catalog:
     #   rules:
     #     - allow: [User, Group]
 
-    # Supermercados Schemas
+    # Supermercados Schemas (protobuf source of truth)
     - type: url
       target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/catalog-info.yaml
       rules:
         - allow: [Component, API]
-    
+
+    # Generated libraries
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-schemas-python/-/blob/main/catalog-info.yaml
+      rules:
+        - allow: [Component]
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-schemas-typescript/-/blob/main/catalog-info.yaml
+      rules:
+        - allow: [Component]
+
+    # Microservices
+    - type: url
+      target: https://gitlab.com/supermercados-poc/store-service/-/blob/main/catalog-info.yaml
+      rules:
+        - allow: [Component, API]
+    - type: url
+      target: https://gitlab.com/supermercados-poc/user-service/-/blob/main/catalog-info.yaml
+      rules:
+        - allow: [Component, API]
+
     # Organizational entities
     - type: url
       target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/backstage-org.yaml
