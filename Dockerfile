@@ -51,7 +51,7 @@ RUN curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     rm get-pip.py
 
 # Install mkdocs-techdocs-core for TechDocs
-RUN pip3 install --no-cache-dir --break-system-packages mkdocs-techdocs-core==1.*
+RUN pip3 install --no-cache-dir --break-system-packages mkdocs-techdocs-core==1.* mkdocs-kroki-plugin
 
 WORKDIR /app
 

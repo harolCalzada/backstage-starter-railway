@@ -52,7 +52,6 @@ import {
 
 import { TechDocsAddons } from '@backstage/plugin-techdocs-react';
 import { ReportIssue } from '@backstage/plugin-techdocs-module-addons-contrib';
-import { Mermaid } from 'backstage-plugin-techdocs-addon-mermaid';
 
 import {
   EntityKubernetesContent,
@@ -68,7 +67,6 @@ const techdocsContent = (
   <EntityTechdocsContent>
     <TechDocsAddons>
       <ReportIssue />
-      <Mermaid />
     </TechDocsAddons>
   </EntityTechdocsContent>
 );
