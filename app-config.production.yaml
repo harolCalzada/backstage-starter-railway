@@ -127,3 +127,7 @@ catalog:
       target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/templates/middleware-exposure/template.yaml
       rules:
         - allow: [Template]
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/templates/middleware-exposure-v2/template.yaml
+      rules:
+        - allow: [Template]
