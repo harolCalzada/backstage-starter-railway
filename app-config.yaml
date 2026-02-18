@@ -152,6 +152,12 @@ catalog:
       rules:
         - allow: [System, Group]
 
+    # Middleware Archetypes (Software Templates)
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/templates/middleware-exposure/template.yaml
+      rules:
+        - allow: [Template]
+
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
 

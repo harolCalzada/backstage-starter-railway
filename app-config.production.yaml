@@ -59,13 +59,13 @@ proxy:
 techdocs:
   builder: 'local'
   generator:
-    runIn: 'local'  # Use 'local' instead of 'docker' for Railway
+    runIn: 'local' # Use 'local' instead of 'docker' for Railway
   publisher:
     type: 'local'
 
 auth:
   providers:
-    guest: 
+    guest:
       dangerouslyAllowOutsideDevelopment: true
 
 catalog:
@@ -121,3 +121,9 @@ catalog:
       target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/backstage-org.yaml
       rules:
         - allow: [System, Group]
+
+    # Middleware Archetypes (Software Templates)
+    - type: url
+      target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/templates/middleware-exposure/template.yaml
+      rules:
+        - allow: [Template]
