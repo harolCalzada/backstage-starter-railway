@@ -94,7 +94,7 @@ catalog:
     - type: url
       target: https://gitlab.com/supermercados-poc/supermercados-schemas/-/blob/main/catalog-info.yaml
       rules:
-        - allow: [Component, API]
+        - allow: [Component, API, Location]
 
     # Generated libraries
     - type: url
