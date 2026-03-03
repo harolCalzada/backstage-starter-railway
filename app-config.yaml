@@ -146,11 +146,11 @@ catalog:
       rules:
         - allow: [System, Group]
 
-    # Middleware Archetypes (Software Templates)
+    # Middleware Archetypes (Component + Software Template inline)
     - type: url
-      target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/templates/middleware-b2b/template.yaml
+      target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/catalog-info.yaml
       rules:
-        - allow: [Template]
+        - allow: [Component, Template]
 
 kubernetes:
   # see https://backstage.io/docs/features/kubernetes/configuration for kubernetes configuration options
