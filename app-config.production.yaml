@@ -78,6 +78,12 @@ catalog:
     - type: file
       target: ./examples/entities.yaml
 
+    # Local example template (diagnostic: confirms Template kind works in /create)
+    - type: file
+      target: ./examples/template/template.yaml
+      rules:
+        - allow: [Template]
+
     # Local example organizational data
     - type: file
       target: ./examples/org.yaml
