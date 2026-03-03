@@ -118,6 +118,6 @@ catalog:
 
     # Middleware Archetypes (Software Templates)
     - type: url
-      target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/templates/middleware-exposure-v2/template.yaml
+      target: https://gitlab.com/supermercados-poc/supermercados-archetypes/-/blob/main/templates/middleware-b2b/template.yaml
       rules:
         - allow: [Template]
